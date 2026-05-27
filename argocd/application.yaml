@@ -1,0 +1,33 @@
+# Apply this ONCE to register your app with ArgoCD.
+# After this, ArgoCD watches k8s/ in your repo and keeps the cluster in sync.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-challenge
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/PragyaLaxkar/fluid-ai-devops-challenge.git
+    targetRevision: main
+    path: k8s
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops-challenge
+
+  syncPolicy:
+    automated:
+      prune: true        # delete resources removed from git
+      selfHeal: true     # revert manual changes to the cluster
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 10s
+        factor: 2
+        maxDuration: 1m
