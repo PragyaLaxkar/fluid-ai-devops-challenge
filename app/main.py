@@ -33,7 +33,8 @@ def get_conn():
 
 @app.on_event("startup")
 def init_db():
-    #tiny change to test argocd auto-sync on app startup. Ignore this change.
+    # tiny change to test argocd auto-sync on app startup. Ignore this change.
+    # second tiny change to test argocd auto-sync on app startup. Ignore this change.
     # Retry loop — DB pod may still be coming up.
     for attempt in range(30):
         try:
