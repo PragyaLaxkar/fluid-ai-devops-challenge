@@ -61,7 +61,7 @@ spec:
           # comes back, the pod re-joins automatically.
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /healthz
               port: 8000
             initialDelaySeconds: 5
             periodSeconds: 5
