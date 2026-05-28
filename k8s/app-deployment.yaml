@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/pragyalaxkar/fluid-ai-devops-challenge-app:c56d0bc
+          image: ghcr.io/pragyalaxkar/fluid-ai-devops-challenge-app:9063827
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
